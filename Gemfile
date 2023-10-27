@@ -14,7 +14,7 @@ gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
-
+gem 'sass-rails', '>= 6'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -76,3 +76,13 @@ group :test do
   gem 'mocha', :require => false
   gem 'webmock'
 end
+
+gem 'activeadmin'
+gem 'activeadmin_blaze_theme'
+gem 'awesome_print'
+gem 'cancancan'
+gem 'config'
+gem 'devise'
+gem 'draper'
+gem 'haml'
+gem 'has_scope'
