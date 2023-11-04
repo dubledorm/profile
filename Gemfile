@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.8"
+gem "rails", "~> 7.0.4.3"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -77,7 +77,8 @@ group :test do
   gem 'webmock'
 end
 
-gem 'activeadmin'
+gem 'ransack', '~> 3.2.1'
+gem 'activeadmin', '~> 2.13.0'
 gem 'activeadmin_blaze_theme'
 gem 'awesome_print'
 gem 'cancancan'

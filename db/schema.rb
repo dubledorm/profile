@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_27_195350) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_04_094515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,39 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_195350) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
+  create_table "candidate_profiles", force: :cascade do |t|
+    t.string "lastname", null: false
+    t.string "firstname"
+    t.string "patronymic"
+    t.date "birthday"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["birthday"], name: "index_candidate_profiles_on_birthday"
+    t.index ["lastname"], name: "index_candidate_profiles_on_lastname"
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.string "email"
+    t.string "description"
+    t.string "actual_state"
+    t.bigint "candidate_profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_profile_id"], name: "index_emails_on_candidate_profile_id"
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.string "phone", null: false
+    t.text "description"
+    t.string "actual_state"
+    t.bigint "candidate_profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_profile_id"], name: "index_phones_on_candidate_profile_id"
+    t.index ["phone"], name: "index_phones_on_phone"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,4 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_195350) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "emails", "candidate_profiles"
+  add_foreign_key "phones", "candidate_profiles"
 end
