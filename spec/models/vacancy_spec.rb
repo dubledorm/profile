@@ -11,5 +11,6 @@ RSpec.describe Vacancy, type: :model do
 
     # Validations
     it { should validate_presence_of(:name) }
+    it { should have_many(:candidate_profiles) }
   end
 end

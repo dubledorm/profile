@@ -1,15 +1,17 @@
 ActiveAdmin.register CandidateProfile do
-  permit_params :lastname, :firstname, :patronymic, :birthday, :description,
+  permit_params :lastname, :firstname, :patronymic, :birthday, :description, :vacancy_id,
                 emails_attributes: %i[id email description actual_state _destroy],
                 phones_attributes: %i[id phone description actual_state _destroy]
 
   form title: CandidateProfile.model_name.human do |f|
     f.semantic_errors *f.object.errors
     inputs do
+      f.input :vacancy
       f.input :lastname
       f.input :firstname
       f.input :patronymic
       f.input :birthday, start_year: Time.new.year - 100, end_year: Time.new.year - 10
+      f.file_field :resume
     end
 
 
@@ -36,11 +38,13 @@ ActiveAdmin.register CandidateProfile do
   show do
     panel CandidateProfile.model_name.human do
       attributes_table_for candidate_profile do
+        row :vacancy
         row :lastname
         row :firstname
         row :patronymic
         row :birthday
         row :description
+        row :resume
         row :created_at
         row :updated_at
       end

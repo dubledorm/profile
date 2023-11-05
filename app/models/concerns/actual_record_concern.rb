@@ -8,7 +8,7 @@ module ActualRecordConcern
   included do
     validates :actual_state, inclusion: { in: ACTUAL_STATE_VALUES }
 
-    before_validation do
+    after_initialize do
       self.actual_state = 'actual' if actual_state.nil?
     end
   end

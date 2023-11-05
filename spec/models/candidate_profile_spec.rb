@@ -13,5 +13,7 @@ RSpec.describe CandidateProfile, type: :model do
     it { should validate_presence_of(:lastname) }
 
     it { should have_many(:emails) }
+    it { should have_many(:phones) }
+    it { should belong_to(:vacancy) }
   end
 end
