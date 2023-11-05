@@ -9,8 +9,7 @@ ActiveAdmin.register CandidateProfile do
       f.input :lastname
       f.input :firstname
       f.input :patronymic
-      f.input :birthday
-      f.input :description, as: :text
+      f.input :birthday, start_year: Time.new.year - 100, end_year: Time.new.year - 10
     end
 
 
