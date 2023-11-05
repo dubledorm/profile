@@ -7,4 +7,8 @@ class Email < ApplicationRecord
   validates :email, presence: true
 
   belongs_to :candidate_profile
+
+  def name
+    email
+  end
 end

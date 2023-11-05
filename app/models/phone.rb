@@ -7,4 +7,8 @@ class Phone < ApplicationRecord
   validates :phone, presence: true
 
   belongs_to :candidate_profile
+
+  def name
+    phone
+  end
 end
