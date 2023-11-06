@@ -1,0 +1,10 @@
+ru:
+  vacancy:
+    actual_state:
+      actual: Открыта
+      deprecated: Закрыта
+      undefined: Неопределено
+    currency:
+      rur: Рубль
+      usd: Доллар
+      undefined: Неопределено

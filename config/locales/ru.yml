@@ -1,0 +1,51 @@
+ru:
+  aliases:
+    _timestamps_alias: &default
+      id: Ид-р
+      created_at: Создан
+      updated_at: Изменён
+  activerecord:
+    models:
+      user:
+        one: Пользователь
+        other: Пользователи
+      candidate_profile:
+        one: Профиль кандидата
+        other: Кандидаты
+      vacancy:
+        one: Вакансия
+        other: Вакансии
+    attributes:
+      user:
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        encrypted_password: Текущий пароль
+        reset_password_token: Токен для сброса пароля
+        reset_password_sent_at: Дата отправки сброса пароля
+        remember_created_at: Дата сохранения сессии
+        roles: Права пользователя
+        current_sign_in_at: Время последнего входа
+        sign_in_count: Счётчик входов
+        <<: *default
+      candidate_profile:
+        lastname: Фамилия
+        firstname: Имя
+        patronymic: Отчество
+        birthday: Дата рождения
+        description: Описание
+        vacancy: Вакансия
+        vacancy_id: Вакансия
+        email: Email
+        phone: Теленфон
+        resume: Файл резюме
+        <<: *default
+      vacancy:
+        name: Название
+        description: Описание
+        min_cost: Мин. цена
+        max_cost: Макс. цена
+        currency: Валюта
+        quantity: Кол-во
+        actual_state: Актуальность
+        <<: *default
