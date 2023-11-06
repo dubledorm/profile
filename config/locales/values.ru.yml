@@ -8,3 +8,12 @@ ru:
       rur: Рубль
       usd: Доллар
       undefined: Неопределено
+    grade:
+      junior: Младший
+      middle: Средний
+      senior: Старший
+      undefined: Неопределено
+  candidate_profile:
+    state:
+      new: Новый
+      undefined: Неопределено

@@ -77,7 +77,6 @@ group :test do
   gem 'webmock'
 end
 
-gem 'ransack', '~> 3.2.1'
 gem 'activeadmin', '~> 2.13.0'
 gem 'activeadmin_blaze_theme'
 gem 'awesome_print'
@@ -87,3 +86,5 @@ gem 'devise'
 gem 'draper'
 gem 'haml'
 gem 'has_scope'
+gem 'ransack', '~> 3.2.1'
+gem 'state_machines'

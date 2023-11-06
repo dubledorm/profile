@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_06_084056) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_06_134132) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,10 +67,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_06_084056) do
     t.bigint "vacancy_id", null: false
     t.string "email"
     t.string "phone"
+    t.string "state"
+    t.date "control_date"
     t.index ["birthday"], name: "index_candidate_profiles_on_birthday"
+    t.index ["control_date"], name: "index_candidate_profiles_on_control_date"
     t.index ["email"], name: "index_candidate_profiles_on_email"
     t.index ["lastname"], name: "index_candidate_profiles_on_lastname"
     t.index ["phone"], name: "index_candidate_profiles_on_phone"
+    t.index ["state"], name: "index_candidate_profiles_on_state"
     t.index ["vacancy_id"], name: "index_candidate_profiles_on_vacancy_id"
   end
 
@@ -117,6 +121,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_06_084056) do
     t.string "actual_state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "grade"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

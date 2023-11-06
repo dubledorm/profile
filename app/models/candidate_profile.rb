@@ -2,6 +2,8 @@
 
 # Кандидат на вакансию
 class CandidateProfile < ApplicationRecord
+  include CandidateProfileStateConcern
+
   validates :lastname, presence: true
   validates :email, format: { with: /\A[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}\Z/ },
                     allow_nil: true, allow_blank: true

@@ -1,7 +1,10 @@
 ActiveAdmin.register CandidateProfile do
-  permit_params :lastname, :firstname, :patronymic, :birthday, :description, :vacancy_id, :email, :phone, :resume
+  permit_params :lastname, :firstname, :patronymic, :birthday, :description, :vacancy_id, :email, :phone, :resume,
+                :state
                 # emails_attributes: %i[id email description actual_state _destroy],
                 # phones_attributes: %i[id phone description actual_state _destroy]
+
+  decorate_with CandidateProfileDecorator
 
   filter :vacancy
   filter :lastname
@@ -10,6 +13,8 @@ ActiveAdmin.register CandidateProfile do
   filter :birthday
   filter :email
   filter :phone
+  filter :state, as: :select, collection: proc { CandidateProfileDecorator.states }
+  filter :control_date
   filter :created_at
 
 
@@ -22,6 +27,8 @@ ActiveAdmin.register CandidateProfile do
     column :birthday
     column :email
     column :phone
+    column :state
+    column :control_date
     column :created_at
     column :updated_at
     actions
@@ -37,6 +44,7 @@ ActiveAdmin.register CandidateProfile do
       f.input :birthday, start_year: Time.new.year - 100, end_year: Time.new.year - 10
       f.input :email, as: :email
       f.input :phone
+      f.input :state, as: :select, collection: CandidateProfileDecorator.states
       f.file_field :resume
       f.input :description
     end
@@ -72,6 +80,8 @@ ActiveAdmin.register CandidateProfile do
         row :birthday
         row :email
         row :phone
+        row :state
+        row :control_date
         row :resume do |candidate_profile|
           resume_download_safe_link(candidate_profile)
         end

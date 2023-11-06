@@ -39,6 +39,8 @@ ru:
         email: Email
         phone: Теленфон
         resume: Файл резюме
+        state: Состояние
+        control_date: Контрольная дата
         <<: *default
       vacancy:
         name: Название
@@ -47,5 +49,6 @@ ru:
         max_cost: Макс. цена
         currency: Валюта
         quantity: Кол-во
+        grade: Уровень
         actual_state: Актуальность
         <<: *default
