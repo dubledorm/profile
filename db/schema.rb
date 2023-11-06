@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_06_134132) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_06_135909) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,12 +69,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_06_134132) do
     t.string "phone"
     t.string "state"
     t.date "control_date"
+    t.bigint "user_id", null: false
     t.index ["birthday"], name: "index_candidate_profiles_on_birthday"
     t.index ["control_date"], name: "index_candidate_profiles_on_control_date"
     t.index ["email"], name: "index_candidate_profiles_on_email"
     t.index ["lastname"], name: "index_candidate_profiles_on_lastname"
     t.index ["phone"], name: "index_candidate_profiles_on_phone"
     t.index ["state"], name: "index_candidate_profiles_on_state"
+    t.index ["user_id"], name: "index_candidate_profiles_on_user_id"
     t.index ["vacancy_id"], name: "index_candidate_profiles_on_vacancy_id"
   end
 
@@ -126,6 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_06_134132) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "candidate_profiles", "users"
   add_foreign_key "candidate_profiles", "vacancies"
   add_foreign_key "emails", "candidate_profiles"
   add_foreign_key "phones", "candidate_profiles"

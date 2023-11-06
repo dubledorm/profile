@@ -1,6 +1,6 @@
 ActiveAdmin.register CandidateProfile do
   permit_params :lastname, :firstname, :patronymic, :birthday, :description, :vacancy_id, :email, :phone, :resume,
-                :state
+                :state, :control_date, :user_id
                 # emails_attributes: %i[id email description actual_state _destroy],
                 # phones_attributes: %i[id phone description actual_state _destroy]
 
@@ -29,6 +29,7 @@ ActiveAdmin.register CandidateProfile do
     column :phone
     column :state
     column :control_date
+    column :user
     column :created_at
     column :updated_at
     actions
@@ -82,6 +83,7 @@ ActiveAdmin.register CandidateProfile do
         row :phone
         row :state
         row :control_date
+        row :user
         row :resume do |candidate_profile|
           resume_download_safe_link(candidate_profile)
         end
@@ -118,5 +120,12 @@ ActiveAdmin.register CandidateProfile do
     # end
 
     active_admin_comments
+  end
+
+  controller do
+    def create
+      params['candidate_profile'].merge!('user_id' => current_user.id)
+      create!
+    end
   end
 end

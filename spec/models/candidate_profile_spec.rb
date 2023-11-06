@@ -12,5 +12,6 @@ RSpec.describe CandidateProfile, type: :model do
     # Validations
     it { should validate_presence_of(:lastname) }
     it { should belong_to(:vacancy) }
+    it { should belong_to(:user) }
   end
 end

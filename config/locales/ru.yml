@@ -37,9 +37,10 @@ ru:
         vacancy: Вакансия
         vacancy_id: Вакансия
         email: Email
-        phone: Теленфон
+        phone: Телефон
         resume: Файл резюме
         state: Состояние
+        user: Автор записи
         control_date: Контрольная дата
         <<: *default
       vacancy:

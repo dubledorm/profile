@@ -11,6 +11,7 @@ class CandidateProfile < ApplicationRecord
                     allow_nil: true, allow_blank: true
 
   belongs_to :vacancy
+  belongs_to :user
   # has_many :emails, dependent: :destroy
   # accepts_nested_attributes_for :emails, allow_destroy: true
   # has_many :phones, dependent: :destroy
