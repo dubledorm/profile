@@ -12,6 +12,7 @@ RSpec.describe CandidateProfileBuilder do
     it { expect(builder.build.patronymic).to eq('Вячеславович') }
     it { expect(builder.build.birthday).to eq(Date.new(1988, 5, 26)) }
     it { expect(builder.build.expected_pay).to eq(200_000) }
+    it { expect(builder.build.position).to eq('Инженер-программист') }
   end
 
   describe 'html' do

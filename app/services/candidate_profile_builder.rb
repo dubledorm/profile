@@ -6,6 +6,7 @@ class CandidateProfileBuilder
   LASTNAME_XPATH = '//h2[@data-qa="resume-personal-name"]//span[@class="highlighted"]'
   NAME_XPATH = '//h2[@data-qa="resume-personal-name"]//span[@class="highlighted"]/following::span[1]'
   BIRTHDAY_XPATH = '//div[@class="resume-header-title"]//span[@data-qa="resume-personal-birthday"]'
+  POSITION_XPATH = '//div[@class="resume-block-position"]//span[@data-qa="resume-block-title-position"]/span'
   EXPECTED_PAY_XPATH = '//span[@data-qa="resume-block-salary"]'
   DATE_REGEXP = /^\s*(?<day>\d{1,2})[^\dа-я]+(?<month>[а-я]+)[^\dа-я]+(?<year>\d{4})/
   MONTH_NAMES = %w[января февраля марта апреля мая июня июля августа сентября октября ноября декабря].freeze
@@ -24,6 +25,7 @@ class CandidateProfileBuilder
     result_hash[:patronymic] = patronymic(@nokogiri_html.xpath(NAME_XPATH).text)
     result_hash[:birthday] = birthday(@nokogiri_html.xpath(BIRTHDAY_XPATH).text)
     result_hash[:expected_pay] = expected_pay(@nokogiri_html.xpath(EXPECTED_PAY_XPATH).text)
+    result_hash[:position] = @nokogiri_html.xpath(POSITION_XPATH).text
     CandidateProfile.new(result_hash)
   end
 
