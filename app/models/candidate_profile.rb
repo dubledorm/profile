@@ -10,7 +10,7 @@ class CandidateProfile < ApplicationRecord
   validates :phone, format: { with: /\A(\+)?(\d{1,2})?[( .-]*(\d{3})[) .-]*(\d{3,4})[ .-]?(\d{4})\Z/ },
                     allow_nil: true, allow_blank: true
 
-  belongs_to :vacancy
+  belongs_to :vacancy, optional: true
   belongs_to :user
   # has_many :emails, dependent: :destroy
   # accepts_nested_attributes_for :emails, allow_destroy: true

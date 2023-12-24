@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_24_140153) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_24_143825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_24_140153) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "vacancy_id", null: false
+    t.bigint "vacancy_id"
     t.string "email"
     t.string "phone"
     t.string "state"
@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_24_140153) do
     t.bigint "user_id", null: false
     t.integer "expected_pay"
     t.string "position"
+    t.string "contacts"
     t.index ["birthday"], name: "index_candidate_profiles_on_birthday"
     t.index ["control_date"], name: "index_candidate_profiles_on_control_date"
     t.index ["email"], name: "index_candidate_profiles_on_email"

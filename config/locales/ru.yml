@@ -36,6 +36,8 @@ ru:
         description: Описание
         vacancy: Вакансия
         vacancy_id: Вакансия
+        contacts: Контакты
+        position: Позиция
         email: Email
         phone: Телефон
         resume: Файл резюме

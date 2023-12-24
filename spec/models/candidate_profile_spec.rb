@@ -11,7 +11,10 @@ RSpec.describe CandidateProfile, type: :model do
 
     # Validations
     it { should validate_presence_of(:lastname) }
-    it { should belong_to(:vacancy) }
     it { should belong_to(:user) }
+  end
+
+  describe 'validates' do
+    it { expect(described_class.new(lastname: 'lastname', user: FactoryBot.create(:user)).valid?).to be_truthy }
   end
 end

@@ -1,12 +1,13 @@
 ActiveAdmin.register CandidateProfile do
   permit_params :lastname, :firstname, :patronymic, :birthday, :description, :vacancy_id, :email, :phone, :resume,
-                :state, :control_date, :user_id
+                :state, :control_date, :user_id, :position, :contacts
                 # emails_attributes: %i[id email description actual_state _destroy],
                 # phones_attributes: %i[id phone description actual_state _destroy]
 
   decorate_with CandidateProfileDecorator
 
   filter :vacancy
+  filter :position
   filter :lastname
   filter :firstname
   filter :patronymic
@@ -21,14 +22,13 @@ ActiveAdmin.register CandidateProfile do
   index do
     id_column
     column :vacancy
+    column :position
     column :lastname
     column :firstname
     column :patronymic
     column :birthday
-    column :email
-    column :phone
+    column :contacts
     column :state
-    column :control_date
     column :user
     column :created_at
     column :updated_at
@@ -39,12 +39,14 @@ ActiveAdmin.register CandidateProfile do
     f.semantic_errors *f.object.errors
     inputs do
       f.input :vacancy
+      f.input :position
       f.input :lastname
       f.input :firstname
       f.input :patronymic
       f.input :birthday, start_year: Time.new.year - 100, end_year: Time.new.year - 10
-      f.input :email, as: :email
-      f.input :phone
+      f.input :contacts, as: :text
+      # f.input :email, as: :email
+      # f.input :phone
       f.input :state, as: :select, collection: CandidateProfileDecorator.states
       f.file_field :resume
       f.input :description
@@ -75,10 +77,12 @@ ActiveAdmin.register CandidateProfile do
     panel CandidateProfile.model_name.human do
       attributes_table_for candidate_profile do
         row :vacancy
+        row :position
         row :lastname
         row :firstname
         row :patronymic
         row :birthday
+        row :contacts
         row :email
         row :phone
         row :state
