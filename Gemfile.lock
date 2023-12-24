@@ -395,6 +395,7 @@ DEPENDENCIES
   has_scope
   jbuilder
   mocha
+  nokogiri
   pg (~> 1.1)
   puma (~> 5.0)
   rack_session_access
